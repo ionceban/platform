@@ -1,21 +1,23 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 gem 'mysql2'
 gem "yettings"
 
-group :assets do
+# Commenting this out because we're not going to pre-compile assets for now
+#group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  # trying libv8 to see if things work on travis ci
-  gem "libv8", "~> 3.11.8.4"
+  # Disable these, as they do not compile on ARM yet and may not be needed in our current setup
+  # # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+  # # trying libv8 to see if things work on travis ci
+  # gem "libv8", "~> 3.11.8.4"
 
   gem 'uglifier', '>= 1.0.3'
-end
+#end
 
 gem 'jbuilder'
 gem 'ya2yaml'
@@ -23,7 +25,7 @@ gem 'ya2yaml'
 gem 'themes_for_rails'
 
 gem 'compass-rails'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.1.4'
 gem 'jquery-ui-rails'
 gem 'slim'
 
@@ -39,6 +41,9 @@ group :development do
 end
 
 gem 'pluginfactory'
+
+# this is explicitly needed in fedora 18 -- somehow it's screwed up and needed for the rails console to work
+gem 'minitest'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do

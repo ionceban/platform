@@ -1,9 +1,14 @@
-#header
+header#header
   .inside
-    h1#logo-two
-      = link_to t('amahi'), root_url
-
-    #head-right
+    nav#head-left
+      ul
+        li.first= link_to t('home'), root_path
+        li.last
+          = form_tag '/search/hda', :id => 'searchform' do
+            = text_field_tag 'query', @query, :maxlength => 15, :size => 20, :class => "ip-input", :id => 'searchinput'
+            = submit_tag 'HDA', :class => 'searchbutton', :name => "button"
+            = submit_tag t('web'), :class => 'searchbutton', :name => "button"
+    nav#head-right
       ul
         li= link_to t('home'), root_path
         - if current_user_is_admin?
