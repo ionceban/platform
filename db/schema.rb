@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20120803011600) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "disk_pool_partitions", :force => true do |t|
+    t.string   "path"
+    t.integer  "minimum_free", :default => 10
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "dns_aliases", :force => true do |t|
     t.string "name",    :default => "", :null => false
     t.string "address", :default => "", :null => false
@@ -100,6 +107,16 @@ ActiveRecord::Schema.define(:version => 20120803011600) do
     t.datetime "updated_at",                      :null => false
   end
 
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
   create_table "settings", :force => true do |t|
     t.string "name"
     t.string "value"
@@ -107,8 +124,8 @@ ActiveRecord::Schema.define(:version => 20120803011600) do
   end
 
   create_table "shares", :force => true do |t|
-    t.string   "name"
     t.string   "path"
+    t.string   "comment"
     t.boolean  "rdonly"
     t.boolean  "visible"
     t.boolean  "everyone",         :default => true
@@ -139,7 +156,6 @@ ActiveRecord::Schema.define(:version => 20120803011600) do
     t.string   "last_login_ip"
     t.string   "current_login_ip"
     t.boolean  "admin"
-    t.text     "public_key"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
@@ -159,7 +175,7 @@ ActiveRecord::Schema.define(:version => 20120803011600) do
     t.string   "fname",          :default => ""
     t.boolean  "deletable",      :default => true
     t.boolean  "login_required", :default => false
-    t.integer  "dns_alias_id"
+    t.integer  "alias_id"
     t.string   "custom_options", :default => ""
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false

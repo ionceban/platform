@@ -48,6 +48,9 @@ var SmartLinks = {
 
             open_area = close_link.parents(options['open_area_selector'] + ':first');
             open_area.hide('slow');
+            // clear form
+            open_area.find("input[type=text], input[type=password], textarea").val("");
+
 
             if(typeof(close_link.data('related')) != 'undefined') {
                 $(close_link.data('related')).show();
