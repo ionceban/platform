@@ -167,9 +167,9 @@ GEM
     temple (0.5.5)
     themes_for_rails (0.5.1)
       rails (>= 3.0.0)
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
-      ref
+    therubyrhino (2.0.2)
+      therubyrhino_jar (>= 1.7.3)
+    therubyrhino_jar (1.7.4)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -218,7 +218,7 @@ DEPENDENCIES
   slim
   sqlite3
   themes_for_rails
-  therubyracer
+  therubyrhino
   thin
   uglifier (>= 1.0.3)
   unicorn

@@ -41,6 +41,7 @@ group :development do
 end
 
 gem 'pluginfactory'
+gem 'therubyrhino'
 
 # this is explicitly needed in fedora 18 -- somehow it's screwed up and needed for the rails console to work
 gem 'minitest'

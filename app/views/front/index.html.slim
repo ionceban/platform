@@ -9,7 +9,8 @@
       - if @apps.length < 3
         tr
          td
-           = link_to(theme_image_tag('dashboard.png', :title => "Install applications!"), apps_path)
+           .install-wrap
+              = link_to(theme_image_tag('new_app_btn.png', :title => "Install applications!"), apps_path)
 
   - if @news
     section#latest_news
